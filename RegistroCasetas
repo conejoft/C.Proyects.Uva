@@ -11,7 +11,7 @@ void mensajeBienvenida(){
 }
 
 void mensajeDespedida(){
-    printf("\n\t\t Gracias por usar la aplicaci髇 para registrar las ventas en las casetas,\n\t\t esperamos que haya disfrutado la feria del libro.");
+    printf("\n\t\t Gracias por usar la aplicaci贸n para registrar las ventas en las casetas,\n\t\t esperamos que haya disfrutado la feria del libro.");
     printf("\n\t\t Pulse <Intro> para finalizar..");
     getch();
     system("cls");
@@ -233,11 +233,11 @@ void mostrarMenu(float ventas[FILAS][COLUMANAS],char libros[][99],float infomarc
     printf("\n\t\t 5.Pasar a mayuscula la ultima letra de los");
     printf("\n\t\t 6.Restaurar Titulos");
     printf("\n\t\t 0.Salir");
-    printf("\n\t\t Elige una opci髇 [0,1,2,3,4,5 o 6] \n\t\t ");
+    printf("\n\t\t Elige una opci贸n [0,1,2,3,4,5 o 6] \n\t\t ");
     scanf("%i", &opcion);
 
     while(opcion<0 || opcion>6){
-            printf("\n\t\t No es una opci髇 valida, vuelva a introducir la opci髇 a elegir \n\t\t ");
+            printf("\n\t\t No es una opci贸n valida, vuelva a introducir la opci贸n a elegir \n\t\t ");
             scanf("%i", &opcion);
             fflush(stdin);
     }
@@ -282,7 +282,7 @@ void mostrarMenu(float ventas[FILAS][COLUMANAS],char libros[][99],float infomarc
                 break;
 
         case 6: system("cls");
-                printf("\n\t\t 6.-Restaurar t韙ulos \n ");
+                printf("\n\t\t 6.-Restaurar t铆tulos \n ");
                 printf("\t\t ----------------------------------- \n\n");
                 restaurarTitulos(libros);
                 mostrarMenu(ventas,libros,infomarcionCasetas);
