@@ -1,8 +1,8 @@
 /******************************************************************************************************************************************************
-Programa: FP_P5_G11
-Tarea que realiza: Presenta en pantalla un menú de opciones y ejecuta cada una de ellas con ayuda de subprogramas para los datos de los camiones.
+Programa: FP_P4_G11
+Tarea que realiza: Presenta en pantalla un menú de opciones y ejecuta cada una de ellas con ayuda de subprogramas para la feria del libro.
 Autor : Alejandro Borondo Rodríguez y David Ruiz Velazquez
-Fecha: 16 diciembre de 2022
+Fecha: 11 diciembre de 2022
 ******************************************************************************************************************************************************/
 
 
@@ -25,8 +25,218 @@ void mensajeDespedida(){
     system("cls");
     return 0;
 }
+/******************************************************************************************************************************************************
+Subprograma implementado como procedimiento, ya que no podemos devolver un array con la informacion de las casetas
+******************************************************************************************************************************************************/
+float totalImporteCaseta(int ventas[FILAS][COLUMANAS],float infomarcionCasetas[24]){
 
-void mostrarMenu(){
+    const float precioLibro1 = 15.50, precioLibro2 = 21.00, precioLibro3 = 10.50, precioLibro4 = 12.50;
+
+    float totalCaseta1 = ventas[0][0] * precioLibro1 + ventas[0][1] * precioLibro2 + ventas[0][2]* precioLibro3 + ventas[0][3] * precioLibro4;
+    float totalCaseta2 = ventas[1][0] * precioLibro1 + ventas[1][1] * precioLibro2 + ventas[1][2]* precioLibro3 + ventas[1][3] * precioLibro4;
+    float totalCaseta3 = ventas[2][0] * precioLibro1 + ventas[2][1] * precioLibro2 + ventas[2][2]* precioLibro3 + ventas[2][3] * precioLibro4;
+    float total = totalCaseta1 + totalCaseta2 + totalCaseta3;
+
+    float libro1Caseta1 = ventas[0][0] * precioLibro1;
+    float libro2Caseta1 = ventas[0][1] * precioLibro2;
+    float libro3Caseta1 = ventas[0][2] * precioLibro3;
+    float libro4Caseta1 = ventas[0][3] * precioLibro4;
+
+    float libro1Caseta2 = ventas[1][0] * precioLibro1;
+    float libro2Caseta2 = ventas[1][1] * precioLibro2;
+    float libro3Caseta2 = ventas[1][2] * precioLibro3;
+    float libro4Caseta2 = ventas[1][3] * precioLibro4;
+
+    float libro1Caseta3 = ventas[2][0] * precioLibro1;
+    float libro2Caseta3 = ventas[2][1] * precioLibro2;
+    float libro3Caseta3 = ventas[2][2] * precioLibro3;
+    float libro4Caseta3 = ventas[2][3] * precioLibro4;
+
+    float totalLibro1 = (ventas[0][0] + ventas[1][0] + ventas[2][0]) * precioLibro1;
+    float totalLibro2 = (ventas[0][1] + ventas[1][1] + ventas[2][1]) * precioLibro2;
+    float totalLibro3 = (ventas[0][2] + ventas[1][2] + ventas[2][2]) * precioLibro3;
+    float totalLibro4 = (ventas[0][3] + ventas[1][3] + ventas[2][3]) * precioLibro4;
+
+
+    infomarcionCasetas[0] = precioLibro1;
+    infomarcionCasetas[1] = precioLibro2;
+    infomarcionCasetas[2] = precioLibro3;
+    infomarcionCasetas[3] = precioLibro4;
+    infomarcionCasetas[4] = libro1Caseta1;
+    infomarcionCasetas[5] = libro2Caseta1;
+    infomarcionCasetas[6] = libro3Caseta1;
+    infomarcionCasetas[7] = libro4Caseta1;
+    infomarcionCasetas[8] = totalCaseta1;
+    infomarcionCasetas[9] = libro1Caseta2;
+    infomarcionCasetas[10] = libro2Caseta2;
+    infomarcionCasetas[11] = libro3Caseta2;
+    infomarcionCasetas[12] = libro4Caseta2;
+    infomarcionCasetas[13] = totalCaseta2;
+    infomarcionCasetas[14] = libro1Caseta3;
+    infomarcionCasetas[15] = libro2Caseta3;
+    infomarcionCasetas[16] = libro3Caseta3;
+    infomarcionCasetas[17] = libro4Caseta3;
+    infomarcionCasetas[18] = totalCaseta3;
+    infomarcionCasetas[19] = totalLibro1;
+    infomarcionCasetas[20] = totalLibro2;
+    infomarcionCasetas[21] = totalLibro3;
+    infomarcionCasetas[22] = totalLibro4;
+    infomarcionCasetas[23] = total;
+}
+
+/******************************************************************************************************************************************************
+Subprograma implementado como procedimiento, ya que este se encarga de mostrar los datos en pantalla.
+******************************************************************************************************************************************************/
+
+void mostrarInformeVentasCaseta(float infomarcionCasetas[24]){
+
+    printf("\n\t\t\tINFORME DE VENTAS (Importe total/caseta (Euros))");
+    printf("\n\t\t\t================================================\n");
+    printf("\n\t\t\tLibro 1    Libro 2    Libro 3    Libro 4");
+    printf("\n\tPrecio(euros):   %2.2f      %2.2f      %2.2f      %2.2f", infomarcionCasetas[0], infomarcionCasetas[1], infomarcionCasetas[2], infomarcionCasetas[3]);
+    printf("\n\t============================================================================\n");
+    printf("\n\tCaseta      Libro 1 (euros)  Libro 2 (euros)  Libro 3 (euros)  Libro 4 (euros)   Total (euros)");
+    printf("\n\t   1            %5.2f           %5.2f            %5.2f            %5.2f           %7.2f ", infomarcionCasetas[4], infomarcionCasetas[5], infomarcionCasetas[6], infomarcionCasetas[7], infomarcionCasetas[8]);
+    printf("\n\t   2            %5.2f           %5.2f            %5.2f            %5.2f           %7.2f ", infomarcionCasetas[9], infomarcionCasetas[10], infomarcionCasetas[11], infomarcionCasetas[12], infomarcionCasetas[13]);
+    printf("\n\t   3            %5.2f           %5.2f            %5.2f            %5.2f           %7.2f ", infomarcionCasetas[14], infomarcionCasetas[15], infomarcionCasetas[16], infomarcionCasetas[17], infomarcionCasetas[18]);
+    printf("\n\t   ------------------------------------------------------------------------------------------- ");
+    printf("\n\tTOTALES:        %5.2f           %5.2f            %5.2f            %5.2f           %7.2f ", infomarcionCasetas[19], infomarcionCasetas[20], infomarcionCasetas[21], infomarcionCasetas[22], infomarcionCasetas[23]);
+    printf("\n\t   ------------------------------------------------------------------------------------------- ");
+
+    printf("\n\t\t Pulse <Intro> para continuar..");
+    getch();
+    system("cls");
+}
+
+void registrarVentasCasetas(int ventas[FILAS][COLUMANAS]){
+
+    for(int i = 0;i<FILAS;i++){
+        printf("\n\t\t Registro Ventas Caseta %d",i+1);
+        printf("\n\t\t ======================");
+        printf("\n\t\t Por favor: Introduzca en numero las unidades vendidas por cada libro\n");
+
+        for(int j= 0;j<COLUMANAS;j++){
+            printf("\n\t\t Libro %d: ",j+1);
+            fflush(stdin);
+            scanf("%d",&ventas[i][j]);
+            fflush(stdin);
+        }
+        printf("\n\t\t Pulse <intro> para continuar...");
+        getch();
+        system("cls");
+    }
+}
+/******************************************************************************************************************************************************
+Subprograma implementado como procedimiento, ya que no requerimos que devuelva un valor sino que imprima en pantalla los valores adecuados
+******************************************************************************************************************************************************/
+void informeGeneralVentas(int ventas[FILAS][COLUMANAS]){
+
+    printf("\n\t Informe General de Ventas(unidades vendidas)\n");
+    printf("\n\t Caseta\t\t Libro 1\t Libro 2\t Libro 3\t Libro 4");
+    printf("\n\t =======================================================================");
+
+    for(int i=0;i<FILAS;i++){
+
+        printf("\n\t %d",i    +1);
+        for(int j=0;j<COLUMANAS;j++){
+        printf("\t %d",ventas[i][j]);
+        }
+    }
+    printf("\n\n\t\t Pulse <intro> para continuar...");
+    getch();
+    system("cls");
+}
+/******************************************************************************************************************************************************
+Subprograma implementado como procedimiento,de esta manera podemos generar la tabla directamente en el subprograma
+******************************************************************************************************************************************************/
+
+void mostrarInformeVentasLibros(int ventas[FILAS][COLUMANAS],char libros[][99]){
+
+    //Variables
+    int resultado = 0;
+
+    //Cabecera
+    printf("\n\tINFORME DE VENTAS (Unidades vendidas de cada libro)\n\n");
+    printf("\n\tLibro \t\t\t\t  Caseta 1 \tCaseta 2 \tCaseta 3 \t       Total ");
+    printf("\n\t=============================================================================================\n");
+
+    for(int i=0;i<COLUMANAS;i++){
+        printf("\n\t%-16s",libros[i]);
+        resultado = 0;
+
+        for(int j=0;j<FILAS;j++){
+
+            printf("\t\t%2.d",ventas[j][i]);
+            resultado = ventas[j][i] + resultado;
+        }
+        printf("\t\t\t%d",resultado);
+
+    }
+        printf("\n\t\t Pulse <intro> para continuar...");
+        getch();
+        system("cls");
+}
+
+/******************************************************************************************************************************************************
+Subprograma implementado como procedimiento, ya que no devuelve ningun valor sino que muestra datos en pantalla
+******************************************************************************************************************************************************/
+
+void listarLibros(char libros[][99]){
+
+    printf("\n\tLISTADO GENERAL DE LIBROS\n\n");
+    printf("\n\t=========================\n");
+
+        for(int i=0;i<COLUMANAS;i++){
+        printf("\n\t%-16s",libros[i]);
+        }
+        printf("\n\t\t Pulse <intro> para continuar...");
+        getch();
+        system("cls");
+}
+
+void pasarMayuscLetrasPosImpares(char libros[][99]){
+
+    int x, y;
+    for(x = 0; x <= 3; ++x ){
+        for(y = 1; y <= sizeof(libros[x]) ; y = y+2){
+        libros[x][y] = toupper(libros[x][y]);
+        }
+    }
+    printf("\n\t\t Pulse <intro> para continuar...");
+        getch();
+        system("cls");
+}
+
+void pasarMayuscUltLetra(char libros[][99]){
+
+    int x;
+
+    for(x = 0; x <= 3; ++x){
+
+    libros[x][strlen(libros[x]) - 1] = toupper(libros[x][strlen(libros[x]) - 1]);
+    }
+
+    printf("\n\t\t Pulse <Intro> para continuar..");
+    getch();
+    system("cls");
+}
+
+void restaurarTitulos(char libros[][99]){
+
+    int x, y;
+
+    for(x = 0; x<=3; ++x){
+        libros[x][0] = toupper(libros[x][0]);
+        for(y = 1; y <= sizeof(libros[x]) ; ++y){
+        libros[x][y] = tolower(libros[x][y]);
+            }
+    }
+    printf("\n\t\t Pulse <Intro> para continuar..");
+    getch();
+    system("cls");
+}
+
+void mostrarMenu(float ventas[FILAS][COLUMANAS],char libros[][99],float infomarcionCasetas[24]){
 
     int opcion;
 
@@ -38,8 +248,9 @@ void mostrarMenu(){
     printf("\n\t\t 3.Importe total vendido en cada caseta");
     printf("\n\t\t 4.Pasar a mayuscula letras posiciones imapres de los titulos");
     printf("\n\t\t 5.Pasar a mayuscula la ultima letra de los");
+    printf("\n\t\t 6.Restaurar Titulos");
     printf("\n\t\t 0.Salir");
-    printf("\n\t\t Elige una opción [0,1,2,3,4 o 5] \n\t\t ");
+    printf("\n\t\t Elige una opción [0,1,2,3,4,5 o 6] \n\t\t ");
     scanf("%i", &opcion);
 
     while(opcion<0 || opcion>6){
@@ -50,33 +261,49 @@ void mostrarMenu(){
 
      switch(opcion){
         case 1: system("cls");
-                printf("\n\t\t 1.-Registrar datos de los camiones \n ");
+                printf("\n\t\t 1.-Informe General de Ventas \n ");
                 printf("\t\t ------------------ \n\n");
-                mostrarMenu();
+                informeGeneralVentas(ventas);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
                 break;
 
         case 2: system("cls");
-                printf("\n\t\t 2.-Informe general \n ");
+                printf("\n\t\t 2.-Unidades Vendidas de cada libro \n ");
                 printf("\t\t -------------------- \n\n");
-                mostrarMenu();
+                mostrarInformeVentasLibros(ventas,libros);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
                 break;
 
         case 3: system("cls");
-                printf("\n\t\t 3.-Informe compra camiones (año) \n ");
+                printf("\n\t\t 3.-Importe total vendido en cada caseta \n ");
                 printf("\t\t ----------------------------------- \n\n");
-                mostrarMenu();
+                totalImporteCaseta(ventas,infomarcionCasetas);
+                mostrarInformeVentasCaseta(infomarcionCasetas);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
                 break;
 
         case 4: system("cls");
-                printf("\n\t\t 4.-Informe camiones (marca y Km. en un día) \n ");
+                printf("\n\t\t 4.-Pasar a mayuscula letras posiciones imapres de los titulos \n ");
                 printf("\t\t ----------------------------------- \n\n");
-                mostrarMenu();
+                pasarMayuscLetrasPosImpares(libros);
+                listarLibros(libros);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
                 break;
 
         case 5: system("cls");
-                printf("\n\t\t 5.-Mostrar Km. cada día de la semana de un camión \n ");
+                printf("\n\t\t 5.-Pasar a mayuscula letras posiciones imapres de los titulos \n ");
                 printf("\t\t ----------------------------------- \n\n");
-                mostrarMenu();
+                pasarMayuscUltLetra(libros);
+                listarLibros(libros);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
+                break;
+
+        case 6: system("cls");
+                printf("\n\t\t 6.-Restaurar títulos \n ");
+                printf("\t\t ----------------------------------- \n\n");
+                restaurarTitulos(libros);
+                listarLibros(libros);
+                mostrarMenu(ventas,libros,infomarcionCasetas);
                 break;
 
         case 0: system("cls");
@@ -90,7 +317,14 @@ void mostrarMenu(){
 
 int main(){
 
+    int ventas[FILAS][COLUMANAS];
+    char libros[][99]={"Libro de la vida","El castillo interior","Las fundaciones","Escritos menores"};
+    float infomarcionCasetas[24];
+
     mensajeBienvenida();
-    mostrarMenu();
+
+    registrarVentasCasetas(&ventas);
+
+    mostrarMenu(ventas,libros,infomarcionCasetas);
 
 }
